@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @job_list.errors.any? %>
+  <% @job_list.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Job List #<%= @job_list.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_job_list/<%= @job_list.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for job_type_id -->
+      <div class="form-group">
+        <label for="job_type_id" class="control-label">
+          Job type
+        </label>
+
+        <input type="text" id="job_type_id" name="job_type_id" placeholder="Job type" class="form-control" value="<%= @job_list.job_type_id %>">
+      </div>
+
+      <!-- Label and input for job_id -->
+      <div class="form-group">
+        <label for="job_id" class="control-label">
+          Job
+        </label>
+
+        <input type="text" id="job_id" name="job_id" placeholder="Job" class="form-control" value="<%= @job_list.job_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Job List
+      </button>
+      or
+      <a href="/job_lists/<%= @job_list.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

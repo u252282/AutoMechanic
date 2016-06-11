@@ -1,0 +1,35 @@
+<!-- Validation failure messages -->
+<% if @timeslot.errors.any? %>
+  <% @timeslot.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Choose a Timeslot</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+<form action="/book_job" method="post">
+  <!-- Hidden input for authenticity token to protect from forgery -->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <input type="hidden" name = "vehicle_id" value="<%=@vehicle_id%>">
+  <input type="hidden" name = "job_types" value="<%=@job_types%>">
+  <div class="form-group">
+    <label for="vehicle_id" class="control-label">
+      Select A Time
+    </label>
+<%=select("timeslot", "id", @timeslots_available.all.collect {|p| [ p.timeslot.in_time_zone("Central Time (US & Canada)").strftime("%b %e %l %p"), p.id ] }, { include_blank: true })%>
+</div>
+<button class="btn btn-success">
+  Book
+</button>
+or
+<a href="/jobs">Cancel</a>
+</form>
+  </div>
+</div>

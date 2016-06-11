@@ -1,0 +1,53 @@
+<!-- Validation failure messages -->
+<% if @job.errors.any? %>
+  <% @job.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Job #<%= @job.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_job/<%= @job.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for completed -->
+      <div class="checkbox">
+        <label for="completed">
+          <input type="checkbox" id="completed" name="completed" value="1" <%= "checked" if @job.completed %>>
+          Completed
+        </label>
+      </div>
+
+      <!-- Label and input for started -->
+      <div class="checkbox">
+        <label for="started">
+          <input type="checkbox" id="started" name="started" value="1" <%= "checked" if @job.started %>>
+          Started
+        </label>
+      </div>
+
+      <!-- Label and input for vehicle_id -->
+      <div class="form-group">
+        <label for="vehicle_id" class="control-label">
+          Vehicle
+        </label>
+
+        <input type="text" id="vehicle_id" name="vehicle_id" placeholder="Vehicle" class="form-control" value="<%= @job.vehicle_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Job
+      </button>
+      or
+      <a href="/jobs/<%= @job.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

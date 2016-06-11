@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Job types
+    <a href="/job_types/new" class="btn btn-lg btn-success">New Job type</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Repair time minutes</th>
+        <th>Description</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @job_types.each do |job_type| %>
+      <tr>
+        <td><%= job_type.repair_time_minutes %></td>
+        <td><%= job_type.description %></td>
+        <td><%= job_type.name %></td>
+        <td>
+          <a href="/job_types/<%= job_type.id %>" class="btn btn-primary">Show</a>
+          <a href="/job_types/<%= job_type.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_job_type/<%= job_type.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

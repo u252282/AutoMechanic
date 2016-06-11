@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>
+    Hours of operations
+    <a href="/hours_of_operations/new" class="btn btn-lg btn-success">New Hours of operation</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Day of the week</th>
+        <th>Open time(AM)</th>
+        <th>Close time(PM)</th>
+      </tr>
+
+      <% @hours_of_operations.each do |hours_of_operation| %>
+      <tr>
+        <td><%= hours_of_operation.day_of_the_week %></td>
+        <td><%= hours_of_operation.open_time %></td>
+        <td><%= hours_of_operation.close_time %></td>
+
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

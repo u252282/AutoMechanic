@@ -1,0 +1,100 @@
+<!-- Validation failure messages -->
+<% if @garage.errors.any? %>
+  <% @garage.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Garage #<%= @garage.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_garage/<%= @garage.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for zipcode -->
+      <div class="form-group">
+        <label for="zipcode" class="control-label">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @garage.zipcode %>">
+      </div>
+
+      <!-- Label and input for state -->
+      <div class="form-group">
+        <label for="state" class="control-label">
+          State
+        </label>
+
+        <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @garage.state %>">
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @garage.city %>">
+      </div>
+
+      <!-- Label and input for address_line_2 -->
+      <div class="form-group">
+        <label for="address_line_2" class="control-label">
+          Address line 2
+        </label>
+
+        <input type="text" id="address_line_2" name="address_line_2" placeholder="Address line 2" class="form-control" value="<%= @garage.address_line_2 %>">
+      </div>
+
+      <!-- Label and input for garage_code -->
+      <div class="form-group">
+        <label for="garage_code" class="control-label">
+          Garage code
+        </label>
+
+        <input type="text" id="garage_code" name="garage_code" placeholder="Garage code" class="form-control" value="<%= @garage.garage_code %>">
+      </div>
+
+      <!-- Label and input for phone_number -->
+      <div class="form-group">
+        <label for="phone_number" class="control-label">
+          Phone number
+        </label>
+
+        <input type="text" id="phone_number" name="phone_number" placeholder="Phone number" class="form-control" value="<%= @garage.phone_number %>">
+      </div>
+
+      <!-- Label and input for address_line_1 -->
+      <div class="form-group">
+        <label for="address_line_1" class="control-label">
+          Address line 1
+        </label>
+
+        <input type="text" id="address_line_1" name="address_line_1" placeholder="Address line 1" class="form-control" value="<%= @garage.address_line_1 %>">
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @garage.name %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Garage
+      </button>
+      or
+      <a href="/garages/<%= @garage.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

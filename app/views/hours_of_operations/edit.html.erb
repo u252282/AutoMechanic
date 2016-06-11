@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @hours_of_operation.errors.any? %>
+  <% @hours_of_operation.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Hours Of Operation #<%= @hours_of_operation.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_hours_of_operation/<%= @hours_of_operation.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for garage_id -->
+      <div class="form-group">
+        <label for="garage_id" class="control-label">
+          Garage
+        </label>
+
+        <input type="text" id="garage_id" name="garage_id" placeholder="Garage" class="form-control" value="<%= @hours_of_operation.garage_id %>">
+      </div>
+
+      <!-- Label and input for close_time -->
+      <div class="form-group">
+        <label for="close_time" class="control-label">
+          Close time
+        </label>
+
+        <input type="text" id="close_time" name="close_time" placeholder="Close time" class="form-control" value="<%= @hours_of_operation.close_time %>">
+      </div>
+
+      <!-- Label and input for open_time -->
+      <div class="form-group">
+        <label for="open_time" class="control-label">
+          Open time
+        </label>
+
+        <input type="text" id="open_time" name="open_time" placeholder="Open time" class="form-control" value="<%= @hours_of_operation.open_time %>">
+      </div>
+
+      <!-- Label and input for day_of_the_week -->
+      <div class="form-group">
+        <label for="day_of_the_week" class="control-label">
+          Day of the week
+        </label>
+
+        <input type="text" id="day_of_the_week" name="day_of_the_week" placeholder="Day of the week" class="form-control" value="<%= @hours_of_operation.day_of_the_week %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Hours Of Operation
+      </button>
+      or
+      <a href="/hours_of_operations/<%= @hours_of_operation.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

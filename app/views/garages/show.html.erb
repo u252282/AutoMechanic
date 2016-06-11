@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h3>Garage #<%= @garage.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Zipcode</dt>
+      <dd><%= @garage.zipcode %></dd>
+
+      <dt>State</dt>
+      <dd><%= @garage.state %></dd>
+
+      <dt>City</dt>
+      <dd><%= @garage.city %></dd>
+
+      <dt>Address line 2</dt>
+      <dd><%= @garage.address_line_2 %></dd>
+
+      <dt>Garage code</dt>
+      <dd><%= @garage.garage_code %></dd>
+
+      <dt>Phone number</dt>
+      <dd><%= @garage.phone_number %></dd>
+
+      <dt>Address line 1</dt>
+      <dd><%= @garage.address_line_1 %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @garage.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/garages" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/garages/<%= @garage.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_garage/<%= @garage.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

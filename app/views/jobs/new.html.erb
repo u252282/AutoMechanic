@@ -1,0 +1,49 @@
+<!-- Validation failure messages -->
+<% if @job.errors.any? %>
+  <% @job.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Job</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_job" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <!-- Label and input for vehicle_id -->
+      <div class="form-group">
+        <label for="vehicle_id" class="control-label">
+          Select your Vehicle
+        </label>
+        <%= collection_select(:job, :vehicle_id, @vehicles, :id, :model) %>
+      </div>
+      <div class="form-group">
+        <label for="job_type_id" class="control-label">
+          Select your desired Jobs
+        </label>
+        <%@job_types.each do |job_type|%>
+        <div class="checkbox">
+          <label for=<%=job_type.name%>>
+            <input type="checkbox" name="job_types[]" value="<%=job_type.id%>">
+            <%=job_type.name%>
+          </label>
+        </div>
+        <%end%>
+
+      </div>
+
+      <button class="btn btn-success">
+        Find Availability
+      </button>
+      or
+      <a href="/jobs">Cancel</a>
+    </form>
+  </div>
+</div>

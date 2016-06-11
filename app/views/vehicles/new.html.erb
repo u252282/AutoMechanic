@@ -1,0 +1,83 @@
+<!-- Validation failure messages -->
+<% if @vehicle.errors.any? %>
+  <% @vehicle.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Vehicle</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_vehicle" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for customer_id -->
+      <div class="form-group">
+        <input type="hidden" id="customer_id" name="customer_id" placeholder="Customer" class="form-control" value="<%= current_user.id %>">
+      </div>
+
+      <!-- Label and input for make -->
+      <div class="form-group">
+        <label for="make" class="control-label">
+          Make
+        </label>
+
+        <input type="text" id="make" name="make" placeholder="Make" class="form-control" value="<%= @vehicle.make %>">
+      </div>
+      <!-- Label and input for model -->
+      <div class="form-group">
+        <label for="model" class="control-label">
+          Model
+        </label>
+
+        <input type="text" id="model" name="model" placeholder="Model" class="form-control" value="<%= @vehicle.model %>">
+        <!-- Label and input for year -->
+        <div class="form-group">
+          <label for="year" class="control-label">
+            Year
+          </label>
+
+          <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @vehicle.year %>">
+        </div>
+      </div>
+      <!-- Label and input for color -->
+      <div class="form-group">
+        <label for="color" class="control-label">
+          Color
+        </label>
+
+        <input type="text" id="color" name="color" placeholder="Color" class="form-control" value="<%= @vehicle.color %>">
+      </div>
+      <!-- Label and input for mileage -->
+      <div class="form-group">
+        <label for="mileage" class="control-label">
+          Mileage
+        </label>
+
+        <input type="text" id="mileage" name="mileage" placeholder="Mileage" class="form-control" value="<%= @vehicle.mileage %>">
+      </div>
+      <!-- Label and input for notes -->
+      <div class="form-group">
+        <label for="notes" class="control-label">
+          Notes
+        </label>
+
+        <input type="text" id="notes" name="notes" placeholder="Notes" class="form-control" value="<%= @vehicle.notes %>">
+      </div>
+
+
+      <button class="btn btn-success">
+        Add Vehicle
+      </button>
+      or
+      <a href="/vehicles">Cancel</a>
+    </form>
+  </div>
+</div>

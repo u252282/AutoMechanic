@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Hours Of Operation #<%= @hours_of_operation.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Garage</dt>
+      <dd><%= @hours_of_operation.garage_id %></dd>
+
+      <dt>Close time</dt>
+      <dd><%= @hours_of_operation.close_time %></dd>
+
+      <dt>Open time</dt>
+      <dd><%= @hours_of_operation.open_time %></dd>
+
+      <dt>Day of the week</dt>
+      <dd><%= @hours_of_operation.day_of_the_week %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/hours_of_operations" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/hours_of_operations/<%= @hours_of_operation.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_hours_of_operation/<%= @hours_of_operation.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

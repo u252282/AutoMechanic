@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Timeslot #<%= @timeslot.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Job</dt>
+      <dd><%= @timeslot.job_id %></dd>
+
+      <dt>Mechanic</dt>
+      <dd><%= @timeslot.mechanic_id %></dd>
+
+      <dt>Timeslot</dt>
+      <dd><%= @timeslot.timeslot %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/timeslots" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/timeslots/<%= @timeslot.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_timeslot/<%= @timeslot.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

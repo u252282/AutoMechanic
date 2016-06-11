@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Job Type #<%= @job_type.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Repair time minutes</dt>
+      <dd><%= @job_type.repair_time_minutes %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @job_type.description %></dd>
+
+      <dt>Name</dt>
+      <dd><%= @job_type.name %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/job_types" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/job_types/<%= @job_type.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_job_type/<%= @job_type.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
